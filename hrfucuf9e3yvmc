@@ -1,0 +1,41 @@
+local Library = loadstring(game: HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("ken x mic hub by apichat", "DarkTheme")
+local Tab = Window:NewTab("the rake fram")
+local Tab = Window:NewTab("player")
+local Section = Tab:NewSection("Power")
+Section:NewSlider("Speedpower", "spppedup7-11", 500, 16, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewSlider("JUMPPOWER", "7-11veven", 500, 50, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+local Section = Tab:NewSection("TP")
+players = {}
+ 
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+   table.insert(players,v.Name)
+end
+ 
+Section:NewDropdown("Select Player", " ", players, function(abc)
+    Select = abc
+end)
+ 
+ 
+Section:NewButton("RefreshPlayer", " ", function()
+    table.clear(players)
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+   table.insert(players,v.Name)
+end
+end)
+ 
+Section:NewButton("Teleport", " ", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Select].Character.HumanoidRootPart.CFrame
+end)
+local Section = Tab:NewSection("TpLoop")
+Section:NewButton("tploop thiver", "loop", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/uken2525/Ken-x-mic-hub/main/Ken%20x%20michub%20hehahaha%20tv", true))()
+end)
+local Section = Tab:NewSection("hide ui")
+Section:NewKeybind("hide ui keybind", "ccc", Enum.KeyCode.F, function()
+	Library:ToggleUI()
+end)
